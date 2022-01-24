@@ -1,4 +1,5 @@
 FROM python:3.9
+RUN apt-get install -y build-dep python-psycopg2
 WORKDIR /app
 ENV PYTHONUNBUFFERED 1
 # COPY entrypoint.sh static requirements.txt .
