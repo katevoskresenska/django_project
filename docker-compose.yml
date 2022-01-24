@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./static:/app/static
+    entrypoint:
+      - /app/entrypoint.sh
+
+  nginx:
+    image: nginx:1.19
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./static:/app/static
+    ports:
+      - 80:80
+    depends_on:
+    - web
