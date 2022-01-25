@@ -22,3 +22,4 @@ git clone https://github.com/katevoskresenska/django_project.git
 cp .env django_project/
 cd django_project && docker-compose build --no-cache web && docker-compose up -d && docker-compose restart nginx && docker-compose ps
 ```
+
